@@ -9,29 +9,28 @@ This project demonstrates how to use RDMA (Remote Direct Memory Access) verbs wi
 ## Summary:
 This implementation has successfully achieved:
 
-✅ Zero-copy data transfer between Gaudi and NIC
-✅ Direct DMA-buf registration without CPU mapping
-✅ Bidirectional communication using Send/Receive
-✅ One-sided RDMA Write operations
+✅ Zero-copy data transfer between Gaudi and NIC  
+✅ Direct DMA-buf registration without CPU mapping  
+✅ Bidirectional communication using Send/Receive  
+✅ One-sided RDMA Write operations  
 ⚠️  RDMA Read needs further investigation
 
 This is excellent progress! The core zero-copy functionality is working. For the RDMA Read issue, you might want to:
 
-Check if your RDMA driver version fully supports DMA-buf for all operations
-Verify with ibv_devinfo -v that your device supports RDMA Read
-Test RDMA Read with regular memory to isolate if it's DMA-buf specific
+- Check if your RDMA driver version fully supports DMA-buf for all operations
+- Verify with ibv_devinfo -v that your device supports RDMA Read
+- Test RDMA Read with regular memory to isolate if it's DMA-buf specific
 
 The fact that everything else works confirms that you have true zero-copy RDMA with Gaudi!
 
 ## Working Flow
-DMA-buf is created in Gaudi device memory
-CPU cannot mmap this device memory (this is expected)
-All data stays in device memory - never touches CPU/system RAM
-No data verification because CPU can't read the buffers
+- DMA-buf is created in Gaudi device memory
+- CPU cannot mmap this device memory (this is expected)
+- All data stays in device memory - never touches CPU/system RAM
+- No data verification because CPU can't read the buffers
 
-This is actually the optimal performance path for production! The data flows directly:
+This is actually the optimal performance path for production! The data flows directly:  
 Gaudi Memory → PCIe → NIC → Network → NIC → PCIe → Gaudi Memory
-
 
 ## Prerequisites
 
@@ -87,12 +86,23 @@ make
 
 ## License
 
-[Insert license information here]
+This project is licensed under the MIT License.  
+See the [LICENSE](LICENSE) file for details.
 
 ## Contributing
 
-[Insert contribution guidelines here]
+Contributions are welcome! Please open issues or pull requests for bug fixes, improvements, or new features.
+
+To contribute:
+1. Fork the repository
+2. Create a new branch for your feature or fix
+3. Commit your changes with clear messages
+4. Open a pull request describing your changes
+
+For major changes, please open an issue first to discuss what you would like to change.
 
 ## Contact
 
-[Insert contact information here]
+For questions, suggestions, or support, please open an issue on GitHub or contact the maintainer at:  
+**Email:** [your.email@example.com]  
+**GitHub:** [https://github.com/yourusername/gaudi-verbs-dmabuf](https://github.com/yourusername/gaudi-verbs-dmabuf)
