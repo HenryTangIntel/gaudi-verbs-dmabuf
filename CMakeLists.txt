@@ -43,7 +43,7 @@ set(SOURCES
 
 # Server executable
 add_executable(server
-    src/server.cpp
+    server.cpp
     ${SOURCES}
 )
 
@@ -55,7 +55,7 @@ target_link_libraries(server
 
 # Client executable
 add_executable(client
-    src/client.cpp
+    client.cpp
     ${SOURCES}
 )
 
