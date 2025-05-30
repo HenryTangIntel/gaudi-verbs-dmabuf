@@ -16,12 +16,12 @@ pkg_check_modules(IBVERBS REQUIRED libibverbs)
 include_directories(
     ${IBVERBS_INCLUDE_DIRS}
     ${CMAKE_CURRENT_SOURCE_DIR}/include
-    /workspace/hl-thunk/include
-    /workspace/hl-thunk/include/uapi
-    /workspace/hl-thunk/src
-    /workspace/habanalabs/include/uapi
-    /workspace/hldk/include/specs/misc
-    /workspace/hl-thunk/include/specs/common
+    /opt/habanalabs/src/hl-thunk/include
+    /opt/habanalabs/src/hl-thunk/include/uapi
+    /opt/habanalabs/src/hl-thunk/src
+    /opt/habanalabs/src/habanalabs/include/uapi
+    /opt/habanalabs/src/hldk/include/specs/misc
+    /opt/habanalabs/src/hl-thunk/include/specs/common
     /usr/include
     /usr/include/drm
 )
@@ -29,12 +29,12 @@ include_directories(
 # Link directories
 link_directories(
     ${IBVERBS_LIBRARY_DIRS}
-    /workspace/hl-thunk/build/lib
+    /opt/habanalabs/src/hl-thunk/build/lib
     /usr/lib/x86_64-linux-gnu
 )
 
 # Glob hlthunk libraries
-file(GLOB HLTHUNK_LIBRARIES "/workspace/hl-thunk/build/lib/*.so" "/workspace/hl-thunk/build/lib/*.a")
+file(GLOB HLTHUNK_LIBRARIES "/opt/habanalabs/src/hl-thunk/build/lib/*.so" "/opt/habanalabs/src/hl-thunk/build/lib/*.a")
 
 # Source files
 set(SOURCES
