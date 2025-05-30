@@ -30,7 +30,9 @@ The fact that everything else works confirms that you have true zero-copy RDMA w
 - No data verification because CPU can't read the buffers
 
 This is actually the optimal performance path for production! The data flows directly:  
+```bash
 Gaudi Memory → PCIe → NIC → Network → NIC → PCIe → Gaudi Memory
+```
 
 ## Prerequisites
 
@@ -104,5 +106,5 @@ For major changes, please open an issue first to discuss what you would like to 
 ## Contact
 
 For questions, suggestions, or support, please open an issue on GitHub or contact the maintainer at:  
-**Email:** [your.email@example.com]  
-**GitHub:** [https://github.com/yourusername/gaudi-verbs-dmabuf](https://github.com/yourusername/gaudi-verbs-dmabuf)
+**Email:** [henry.yu.tang@gmail.com]  
+**GitHub:** [https://github.com/HenryTangIntel/gaudi-verbs-dmabuf](https://github.com/HenryTangIntel/gaudi-verbs-dmabuf)
